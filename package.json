@@ -7,6 +7,6 @@
     "nodemailer": "^6.9.16",
     "openai": "^4.73.0",
     "uuid": "^11.0.3",
-    "license": "UNLICENSED",
+    "license": "UNLICENSED"
   }
 }
