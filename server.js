@@ -11,19 +11,6 @@ app.use(logger);
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.static(path.join(__dirname, '/middleware')));
 
-const whitelist = ['https://www.yoursite.com', 'http://127.0.0.1:5500', 'http://localhost:3500'];
-const corsOptions = {
-    origin: (origin, callback) => {
-        if (whitelist.indexOf(origin) !== -1 || !origin) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -34,7 +21,6 @@ app.get('/hackatoon2024', (req,res) => {
 })
 
 app.post('/hackatoon2024', (req,res) => {
-    // request for AI
     let {age, male, female, other, salary, dream, workplace, careerHigh, careerLow, country, abroadYes, abraodNo, hobby, selfDevLow, selfDevMedium, selfDevHigh} = req.body;
 
     let numAge = Number(age)
