@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const nodemailer = require('nodemailer');
 const cors = require('cors');
 const { logger } = require('./middleware/logEvents.js');
 const errorHandler = require('./middleware/errorHandler.js');
@@ -35,6 +34,7 @@ app.get('/hackatoon2024', (req,res) => {
 })
 
 app.post('/hackatoon2024', (req,res) => {
+    // request for AI
     let {age, male, female, other, salary, dream, workplace, careerHigh, careerLow, country, abroadYes, abraodNo, hobby, selfDevLow, selfDevMedium, selfDevHigh} = req.body;
 
     let numAge = Number(age)
@@ -80,7 +80,7 @@ app.post('/hackatoon2024', (req,res) => {
 })
 
 
-app.listen(3500, () => {
+app.listen(PORT, () => {
     console.log('Listening on a port 3500...');
 });
 
@@ -97,6 +97,3 @@ app.all('*', (req, res) => {
 });
 
 app.use(errorHandler);
-
-
-// Creating api reques
